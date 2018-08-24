@@ -20,37 +20,50 @@
 //     }
 // }
 
-
 const account = {
     owner: 'Andrew Mead',
     expenses: [],
-    
+    incomes: [],
 
-    addExpense: (title, amount) => { 
-        
-        return account.expenses.push({title, amount})
+    addExpense: (title, amount) => {
 
-        
-        },
-    expSummary: function () {
-        let total = 0;
-        
+        return account.expenses.push({
+            title,
+            amount
+        })
+
+    },
+    addIncome: function (title, amount) {
+
+        return this.incomes.push({
+            title,
+            amount
+        })
+    },
+
+    accountSummary: function () {
+        let totalExp = 0;
+        let totalInc = 0;
+
         this.expenses.forEach(function (value, index) {
 
-            total += value.amount
-        }.bind(account))
-        return console.log(` ${this.owner} expenses: ${total} `)
+            totalExp += value.amount
+
+        })
+
+        this.incomes.forEach(function (value, index) {
+
+            totalInc += value.amount
+        })
+
+        return console.log(` ${this.owner}  ballance: ${totalInc-totalExp} expenses: ${totalExp} incomes:${totalInc}`)
     }
 }
 
+account.addIncome('job',2000);
+account.addIncome('job',2000);
+account.addIncome('job',2000);
 
+account.addExpense('macbbok',1000)
 
-
-
-account.addExpense('woda', 1)
-account.addExpense('vegetables', 5)
-account.addExpense('vegetables', 5)
-account.addExpense('vegetables', 5)
-account.addExpense('ps4', 400)
-
-account.expSummary();
+account.accountSummary();
