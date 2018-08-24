@@ -1,18 +1,40 @@
+// const account = {
+//     owner: 'Andrew Mead',
+//     expenses: [],
+
+//     addExpense: function (title, amount) {
+
+//         return this.expenses.push({
+//             title,
+//             amount
+//         })
+//     },
+//     expSummary: function () {
+//         let total = 0;
+//         
+//         this.expenses.forEach(function (value, index) {
+
+//             total += value.amount
+//         }.bind(account))
+//         return console.log(` ${this.owner} expenses: ${total} `)
+//     }
+// }
+
+
 const account = {
     owner: 'Andrew Mead',
     expenses: [],
+    
 
-    addExpense: function (title, amount) {
+    addExpense: (title, amount) => { 
+        
+        return account.expenses.push({title, amount})
 
-        return this.expenses.push({
-            title,
-            amount
-        })
-    },
+        
+        },
     expSummary: function () {
         let total = 0;
-        const user=this; 
-
+        
         this.expenses.forEach(function (value, index) {
 
             total += value.amount
@@ -20,6 +42,9 @@ const account = {
         return console.log(` ${this.owner} expenses: ${total} `)
     }
 }
+
+
+
 
 
 account.addExpense('woda', 1)
